@@ -1,0 +1,3 @@
+# Spam Email Classifier
+
+This project is a machine learning-based **spam email classifier** using **Supervised Learning** techniques. The classifier predicts whether an email is spam or not based on its text content.
