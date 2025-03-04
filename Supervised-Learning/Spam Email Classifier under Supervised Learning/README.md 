@@ -1,3 +1,70 @@
-# Spam Email Classifier
+# **Spam Email Classifier** 📩
 
-This project is a machine learning-based **spam email classifier** using **Supervised Learning** techniques. The classifier predicts whether an email is spam or not based on its text content.
+## **Overview**
+A machine learning-based **Spam Email Classifier** that detects whether an email is spam or not based on its text content. It uses **Supervised Learning** techniques with **TF-IDF Vectorization** and **Logistic Regression** for accurate classification.
+
+## **Features**
+- **Natural Language Processing (NLP)** for text analysis
+- **TF-IDF Vectorization** for feature extraction
+- **Logistic Regression Classifier** for email classification
+- **Model Training & Evaluation**
+- **Jupyter Notebook & Python Script** for interactive and standalone execution
+
+## **📂 Project Structure**
+```
+├── Spam Email Classifier/       # Project root directory
+│   ├── data/                    # Dataset storage
+│   │   ├── mail_data.csv        # Labeled spam/ham emails
+│   ├── src/                     # Source code
+│   │   ├── email_spam_classifier.ipynb   # Main Jupyter Notebook
+│   ├── README.md                # Project documentation
+│   ├── requirements.txt         # Dependencies
+```
+
+## **📊 Dataset**
+- **Spam (1):** Unwanted promotional or phishing messages.
+- **Ham (0):** Legitimate emails.
+- Dataset stored in `data/mail_data.csv`.
+
+## **🛠 Installation & Setup**
+```bash
+git clone https://github.com/EXPERT2007/Spam-Email-Classifier.git
+cd Spam-Email-Classifier
+conda create --name spam_env python=3.9 -y
+conda activate spam_env
+pip install -r requirements.txt
+```
+
+## **🚀 Run the Classifier**
+```bash
+python src/spam_classifier.py
+```
+
+## **📈 Train the Model**
+```bash
+python src/train.py
+```
+- Saves model as `models/spam_classifier.pkl`
+
+## **📌 Example Usage**
+```python
+from predict import predict_email
+email_text = "Congratulations! You've won a free lottery. Claim now!"
+prediction = predict_email(email_text)
+print("Spam" if prediction == 1 else "Not Spam")
+```
+
+## **🔧 Technologies Used**
+- **Python** 🐍
+- **Scikit-learn** (Machine Learning)
+- **Pandas & NumPy** (Data Handling)
+- **NLTK** (Natural Language Processing)
+- **Jupyter Notebook** (Exploratory Data Analysis)
+
+## **📜 License**
+MIT License.
+
+## **📢 Contributing**
+Contributions are welcome! Feel free to submit issues or pull requests.
+
+🚀 Happy Coding! 😊
