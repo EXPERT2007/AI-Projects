@@ -74,5 +74,5 @@ This repository is under the [MIT License](./LICENSE).
 
 ## **🙌 Credits**
 
-Made by **EXPERT2007**.  
+Made by **kutmur**.  
 Just a dude having fun with AI.
