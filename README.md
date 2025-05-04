@@ -1,7 +1,6 @@
 # **AI-Projects**
 
 A collection of AI projects where I experiment, learn, and build cool stuff.  
-This is my personal lab for messing around, learning new techniques, and creating fun AI models. Built and maintained by **EXPERT2007**.
 
 ---
 
@@ -13,6 +12,8 @@ AI-Projects/
 ├── Supervised-Learning/          # Supervised learning projects
 │   ├── House Price Prediction/   # Predict house prices
 │   ├── Spam Email Classifier/    # Detect spam emails
+├── Unsupervised-Learning/          # Supervised learning projects
+│   ├── Customer Segmentation/   # Customer Segmentation
 ├── connect4Ai/                   # Connect4 AI project (under src/)
 ├── .gitignore                    # Git ignored files
 ├── LICENSE                       # License file
@@ -21,58 +22,20 @@ AI-Projects/
 
 ---
 
-## **📚 Projects Overview**
+## 📚 Projects Overview
 
 ### 🔹 Supervised Learning
-- **House Price Prediction:**  
-  Predict house prices based on different features using machine learning.
-- **Spam Email Classifier:**  
-  Classify emails as spam or not spam.
+-   **House Price Prediction:** Predicts housing prices based on various features using regression techniques.
+-   **Spam Email Classifier:** Classifies emails as 'spam' or 'not spam' using classification algorithms.
 
-### 🔹 connect4Ai
-- **Connect4 AI Bot:**  
-  AI that plays the Connect4 game.
+### 🔸 Unsupervised Learning
+-   **Customer Segmentation:** Groups customers into distinct segments based on their characteristics and behaviors using clustering algorithms.
 
----
-
-## **🛠️ How to Run**
-
-Clone the repo:
-
-```bash
-git clone https://github.com/EXPERT2007/AI-Projects.git
-cd AI-Projects
-```
-
-Then dive into any project folder and run the code.  
-Each project has its own scripts and (sometimes) its own setup instructions.
-
-Example:
-
-```bash
-cd Supervised-Learning/House\ Price\ Prediction
-python train_model.py
-```
-
-*Make sure you have Python installed and the needed libraries (check each project for requirements).*
+### 🎮 Connect4 AI
+-   **Connect4 AI Bot:** An Artificial Intelligence agent designed to play the game of Connect4.
 
 ---
 
 ## **📜 License**
 
 This repository is under the [MIT License](./LICENSE).
-
----
-
-## **🔥 Notes**
-
-- No guarantees everything works perfectly — this is an experimental repo.
-- Built for learning, exploration, and fun.
-- Updated weekly (or whenever I feel like it).
-
----
-
-## **🙌 Credits**
-
-Made by **kutmur**.  
-Just a dude having fun with AI.
