@@ -8,7 +8,8 @@ A collection of AI projects where I experiment, learn, and build cool stuff.
 │   ├── Supervised-Learning/     # Supervised learning projects
 │   │   ├── Spam Email Classifier/  # Spam detection project
 │   ├── Unsupervised-Learning/   # Unsupervised learning projects
-│   ├── LICENSE                  # License information
+│   │   ├──  Customer Segmentation/  #  Customer Segmentation project
+├── LICENSE                  # License information
 │   ├── README.md                 # Main project documentation
 ```
 
