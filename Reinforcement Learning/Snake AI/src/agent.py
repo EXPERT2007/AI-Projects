@@ -1,3 +1,10 @@
+
+# =====================================
+# DEEP Q-LEARNING AGENT FOR SNAKE GAME
+# =====================================
+# Implements a Deep Q-Learning agent that learns to play Snake game
+# using neural networks and experience replay
+
 import torch
 import random
 import numpy as np
@@ -6,13 +13,25 @@ from game import SnakeGameAI, Direction, Point
 from model import Linear_QNet, QTrainer
 from helper import plot
 
-MAX_MEMORY = 100_000
-BATCH_SIZE = 1000
-LR = 0.001
+# Hyperparameters for training
+MAX_MEMORY = 100_000  # Maximum size of experience replay buffer
+BATCH_SIZE = 1000     # Number of experiences to sample for training
+LR = 0.001           # Learning rate for neural network
+
+# =====================================
+# DEEP Q-LEARNING AGENT CLASS
+# =====================================
 
 class Agent:
+    """
+    Deep Q-Learning agent that learns to play Snake game.
+    Uses neural network to approximate Q-values and epsilon-greedy exploration.
+    """
 
     def __init__(self):
+        """
+        Initialize the agent with neural network, memory buffer, and hyperparameters.
+        """
         self.n_games = 0
         self.epsilon = 0 # randomness
         self.gamma = 0.9 # discount rate
@@ -20,14 +39,29 @@ class Agent:
         self.model = Linear_QNet(11, 256, 3)
         self.trainer = QTrainer(self.model, lr=LR, gamma=self.gamma)
 
+    # =====================================
+    # STATE REPRESENTATION
+    # =====================================
 
     def get_state(self, game):
+        """
+        Extract the current state of the game as an 11-dimensional feature vector.
+        Includes danger detection, movement direction, and food location relative to snake head.
+        
+        Args:
+            game: Current SnakeGameAI instance
+            
+        Returns:
+            numpy array representing the current state
+        """
         head = game.snake[0]
+        # Define points in each direction from the snake head
         point_l = Point(head.x - 20, head.y)
         point_r = Point(head.x + 20, head.y)
         point_u = Point(head.x, head.y - 20)
         point_d = Point(head.x, head.y + 20)
         
+        # Current direction booleans
         dir_l = game.direction == Direction.LEFT
         dir_r = game.direction == Direction.RIGHT
         dir_u = game.direction == Direction.UP
@@ -67,10 +101,28 @@ class Agent:
 
         return np.array(state, dtype=int)
 
+    # =====================================
+    # MEMORY AND TRAINING
+    # =====================================
+
     def remember(self, state, action, reward, next_state, done):
+        """
+        Store experience in replay buffer for later training.
+        
+        Args:
+            state: Current state
+            action: Action taken
+            reward: Reward received
+            next_state: Resulting state
+            done: Whether episode ended
+        """
         self.memory.append((state, action, reward, next_state, done)) # popleft if MAX_MEMORY is reached
 
     def train_long_memory(self):
+        """
+        Train the neural network using a batch of experiences from memory buffer.
+        Implements experience replay to improve learning stability.
+        """
         if len(self.memory) > BATCH_SIZE:
             mini_sample = random.sample(self.memory, BATCH_SIZE) # list of tuples
         else:
@@ -82,9 +134,27 @@ class Agent:
         #    self.trainer.train_step(state, action, reward, next_state, done)
 
     def train_short_memory(self, state, action, reward, next_state, done):
+        """
+        Train the neural network on a single experience immediately.
+        Used for online learning during game play.
+        """
         self.trainer.train_step(state, action, reward, next_state, done)
 
+    # =====================================
+    # ACTION SELECTION
+    # =====================================
+
     def get_action(self, state):
+        """
+        Select action using epsilon-greedy strategy.
+        Balances exploration (random actions) with exploitation (neural network predictions).
+        
+        Args:
+            state: Current game state
+            
+        Returns:
+            List representing action [straight, right, left] with one-hot encoding
+        """
         # random moves: tradeoff exploration / exploitation
         self.epsilon = 80 - self.n_games
         final_move = [0,0,0]
@@ -99,8 +169,16 @@ class Agent:
 
         return final_move
 
+# =====================================
+# TRAINING LOOP
+# =====================================
 
 def train():
+    """
+    Main training loop for the Deep Q-Learning agent.
+    Runs continuous episodes, collecting experiences and training the neural network.
+    Tracks scores and displays real-time performance plots.
+    """
     plot_scores = []
     plot_mean_scores = []
     total_score = 0
@@ -142,6 +220,10 @@ def train():
             plot_mean_scores.append(mean_score)
             plot(plot_scores, plot_mean_scores)
 
+# =====================================
+# SCRIPT EXECUTION
+# =====================================
 
 if __name__ == '__main__':
+    # Start training the agent
     train()
